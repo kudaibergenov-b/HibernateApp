@@ -1,7 +1,7 @@
 package com.kudaibergenov.spring;
 
-import com.kudaibergenov.spring.model.Book;
-import com.kudaibergenov.spring.model.Person;
+import com.kudaibergenov.spring.model.Director;
+import com.kudaibergenov.spring.model.School;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -9,8 +9,8 @@ import org.hibernate.cfg.Configuration;
 public class App {
     public static void main( String[] args ) {
         Configuration configuration = new Configuration()
-                .addAnnotatedClass(Person.class)
-                .addAnnotatedClass(Book.class);
+                .addAnnotatedClass(Director.class)
+                .addAnnotatedClass(School.class);
 
         SessionFactory sessionFactory = configuration.buildSessionFactory();
         Session session = sessionFactory.getCurrentSession();
@@ -18,12 +18,11 @@ public class App {
         try {
             session.beginTransaction();
 
-            Person person = session.get(Person.class, 2);
+            Director director = session.get(Director.class, 2);
 
-            person.addBook(new Book("Tomorrow", 1999));
-            person.addBook(new Book("Today", 1998));
+            School school = new School("The Wall");
 
-            session.save(person);
+            director.setSchool(school);
 
             session.getTransaction().commit();
         } finally {

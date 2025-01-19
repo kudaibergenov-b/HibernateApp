@@ -13,18 +13,22 @@ public class Book {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "author")
+    private String author;
+
     @ManyToOne
     @JoinColumn(name = "personid", referencedColumnName = "id")
     private Person owner;
 
-    @Column(name = "age")
-    private int age;
+    @Column(name = "year")
+    private int year;
 
     public Book() {}
 
-    public Book(String name, int age) {
+    public Book(String name, String author, int year) {
         this.name = name;
-        this.age = age;
+        this.author = author;
+        this.year = year;
     }
 
     public int getId() {
@@ -43,12 +47,12 @@ public class Book {
         this.name = name;
     }
 
-    public int getAge() {
-        return age;
+    public int getYear() {
+        return year;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setYear(int age) {
+        this.year = age;
     }
 
     @Override
@@ -56,7 +60,9 @@ public class Book {
         return "Book{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", age=" + age +
+                ", author='" + author + '\'' +
+                ", owner=" + owner +
+                ", year=" + year +
                 '}';
     }
 
@@ -66,5 +72,13 @@ public class Book {
 
     public void setOwner(Person owner) {
         this.owner = owner;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
     }
 }
