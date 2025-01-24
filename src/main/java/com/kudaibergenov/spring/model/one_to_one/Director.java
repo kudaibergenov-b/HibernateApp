@@ -1,4 +1,4 @@
-package com.kudaibergenov.spring.model;
+package com.kudaibergenov.spring.model.one_to_one;
 
 import org.hibernate.annotations.Cascade;
 

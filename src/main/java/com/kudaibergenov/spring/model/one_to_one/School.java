@@ -1,4 +1,4 @@
-package com.kudaibergenov.spring.model;
+package com.kudaibergenov.spring.model.one_to_one;
 
 import javax.persistence.*;
 
@@ -46,5 +46,6 @@ public class School {
 
     public void setDirector(Director director) {
         this.director = director;
+        director.setSchool(this);
     }
 }
